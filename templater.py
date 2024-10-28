@@ -2,8 +2,8 @@ from pathlib import Path
 
 
 def main():
-    network_objects = file_open("networks/")
-    mikrotik_templater(network_objects)
+    """ Отправляет в stdout """
+    print(mikrotik_templater())
 
 
 def file_open(dir_path: str) -> list[dict]:
@@ -32,12 +32,19 @@ def file_open(dir_path: str) -> list[dict]:
     return network_objects
 
 
-def mikrotik_templater(network_objects: list[dict]):
+def mikrotik_templater() -> str:
     """ Вернет в stdout конфиг в формате Mikrotic """
-    print("/ip firewall address-list")
+    network_objects = file_open("networks/")
+
+    config = []
+
+    header = "/ip firewall address-list\n"
+    config.append(header)
     for line in network_objects:
         for network in line.get('networks'):
-            print(f'add list={line.get('vpn_list')} comment="{line.get('description')}" address={network}')
+            config.append(f'add list={line.get('vpn_list')} comment="{line.get('description')}" address={network}\n')
+
+    return "".join(config)
 
 
 if __name__ == '__main__':
