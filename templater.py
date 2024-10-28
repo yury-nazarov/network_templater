@@ -32,9 +32,9 @@ def file_open(dir_path: str) -> list[dict]:
     return network_objects
 
 
-def mikrotik_templater() -> str:
+def mikrotik_templater(networks="networks/") -> str:
     """ Вернет строку в фиде конфига Mikrotik """
-    network_objects = file_open("networks/")
+    network_objects = file_open(networks)
 
     config = []
 

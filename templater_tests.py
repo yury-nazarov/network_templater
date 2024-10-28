@@ -6,7 +6,7 @@ class TemplaterTest(unittest.TestCase):
 
     def test_1(self):
         path = 'networks/'
-        result = templater.mikrotik_templater()
+        result = templater.mikrotik_templater(path)
         a = '/ip firewall address-list\n' +\
             'add list=vpn_list comment="Network ISP-03" address=172.16.1.0/24\n' +\
             'add list=vpn_list comment="Network ISP-03" address=172.16.2.0/24\n' +\
