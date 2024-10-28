@@ -33,7 +33,7 @@ def file_open(dir_path: str) -> list[dict]:
 
 
 def mikrotik_templater() -> str:
-    """ Вернет в stdout конфиг в формате Mikrotic """
+    """ Вернет строку в фиде конфига Mikrotik """
     network_objects = file_open("networks/")
 
     config = []
